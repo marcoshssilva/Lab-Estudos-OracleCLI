@@ -12,3 +12,12 @@ cat << EOT >> /tmp/subnets-ids.json
 EOT
 oci lb load-balancer create --profile $PROFILE --compartment-id $COMPARTMENT --display-name $NAME  --subnets-ids file:///tmp/subnets-ids.json
 ```
+
+## Listando balanceadores de carga
+
+```bash
+PROFILE=nome_do_perfil
+COMPARTMENT=ocid_do_compartimento
+
+oci lb load-balancer list --profile $PROFILE --compartment-id $COMPARTMENT
+```

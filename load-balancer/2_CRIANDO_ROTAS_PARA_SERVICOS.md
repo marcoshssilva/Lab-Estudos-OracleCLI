@@ -10,3 +10,19 @@ POLICY=tipo_de_regra_de_distribuicao_de_balanceamento | Aceitos ROUND_ROBIN, IP_
 
 oci lb backend-set create --profile $PROFILE --health-checker-protocol $HEALTH_CHECK_PROTOCOL --load-balancer-id $LB_OCID --name $NAME --policy $POLICY
 ```
+
+> Exemplo para HTTP proxy como NGINX
+```bash
+oci lb backend-set create \
+  --profile $PROFILE \                    ## nome do perfil
+  --health-checker-protocol HTTP \        ## protocolo do serviço
+  --health-checker-port 32686 \           ## porta do serviço
+  --health-checker-url-path /healthz \    ## caminho do recurso
+  --health-checker-return-code 200 \      ## código de status esperado do teste de verificacao
+  --health-checker-retries 3 \            ## quantidade de tentativas a verificacao de disponibilidade do serviço
+  --health-checker-interval-in-ms 10000 \ ## intervalo entre chamadas a verificacao de disponibilidade do serviço
+  --health-checker-timeout-in-ms 3000 \   ## tempo em milisegundos aguarandando resposta do serviço
+  --load-balancer-id $OCID_LOADBALANCER \
+  --name $NAME \
+  --policy $POLICY
+```

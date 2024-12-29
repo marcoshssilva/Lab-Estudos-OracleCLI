@@ -26,3 +26,20 @@ oci lb backend-set create \
   --name $NAME \
   --policy $POLICY
 ```
+
+## Adicionando serviços ao conjunto de balanceamento
+
+```bash
+PROFILE=nome_do_perfil
+NAME=nome_do_conjunto_de_servicos_criado_anteriormente
+SERVICE_IP=ip_do_servico_alvo
+PORT=porta_do_servico_alvo
+OCID_LOADBALANCER=voce_ja_sabe_que_eh_o_ocid_do_recurso
+
+oci lb backend create \
+  --profile $PROFILE \
+  --backend-set-name $NAME \
+  --ip-address $SERVICE_IP \
+  --load-balancer-ip $OCID_LOADBALANCER \
+  --port $PORT
+```

@@ -21,3 +21,11 @@ COMPARTMENT=ocid_do_compartimento
 
 oci lb load-balancer list --profile $PROFILE --compartment-id $COMPARTMENT
 ```
+## Obtendo apenas balanceador de carga pelo OCID (id do recurso)
+
+```bash
+PROFILE=nome_do_perfil
+LB_OCID=ocid_do_balanceador_de_carga
+
+oci lb load-balancer get --profile $PROFILE --load-balancer-id $LB_OCID
+```
